@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 
 export const { handlers, auth } = NextAuth({
+  trustHost: true, // 允许 Vercel 自动检测正确的 host
   providers: [
     CredentialsProvider({
       name: "credentials",

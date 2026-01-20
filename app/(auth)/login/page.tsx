@@ -30,16 +30,16 @@ export default function LoginPage() {
       if (result?.error) {
         console.error("登录错误:", result.error)
         setError(`登录失败: ${result.error}`)
-      } else if (result?.ok) {
+        setLoading(false)
+      } else {
+        // 登录成功,等待一小段时间让 cookie 生效
+        await new Promise(resolve => setTimeout(resolve, 100))
         router.push("/dashboard")
         router.refresh()
-      } else {
-        setError("登录失败,未知错误")
       }
     } catch (error) {
       console.error("登录异常:", error)
-      setError(`登录异常: ${error instanceof Error ? error.message : "未知错误"}`)
-    } finally {
+      setError(`登录失败: ${error instanceof Error ? error.message : "未知错误"}`)
       setLoading(false)
     }
   }
