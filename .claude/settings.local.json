@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(taskkill /F /PID 48836)",
+      "Bash(taskkill //F //PID 48836)",
+      "mcp__Playwright__browser_navigate",
+      "mcp__Playwright__browser_fill_form",
+      "mcp__Playwright__browser_click",
+      "mcp__Playwright__browser_close",
+      "Bash(git add -A)"
+    ]
+  }
+}
