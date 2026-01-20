@@ -8,7 +8,20 @@
       "mcp__Playwright__browser_fill_form",
       "mcp__Playwright__browser_click",
       "mcp__Playwright__browser_close",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: 添加完整的用户认证系统\n\n- 实现用户注册功能 \\(邮箱+密码\\)\n- 实现 NextAuth.js 登录认证\n- 添加用户仪表板页面\n- 集成 Supabase PostgreSQL 数据库\n- 添加 Prisma ORM 和数据库迁移\n- 实现密码加密 \\(bcrypt\\)\n- 添加表单验证 \\(Zod\\)\n- 添加测试自动化脚本\n- 配置 Vercel 部署\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git add DEPLOYMENT.md)",
+      "Bash(git commit -m \"docs: 添加 Vercel 部署指南\")",
+      "Bash(node -e \"console.log\\(require\\(''crypto''\\).randomBytes\\(32\\).toString\\(''base64''\\)\\)\")",
+      "Bash(git add DEPLOY_CHECKLIST.md)",
+      "Bash(git commit -m \"docs: 添加部署快速检查清单\")",
+      "Bash(git remote add origin https://github.com/lpc2016/login-app.git)",
+      "Bash(git branch -M main)",
+      "Bash(git push -u origin main)",
+      "Bash(git remote set-url origin https://github.com/lpc2016/login-app.git)",
+      "Bash(ssh-add ~/.ssh/id_ed25519)",
+      "Bash(git commit -m \"fix: 修复 TypeScript 类型错误 - credentials 参数类型断言\n\n- 添加 email 和 password 的类型断言\n- 解决 Vercel 部署时的 TypeScript 编译错误\n- 确保 credentials.email 和 credentials.password 正确转换为 string 类型\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git push)"
     ]
   }
 }
