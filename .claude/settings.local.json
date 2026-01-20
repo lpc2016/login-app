@@ -24,7 +24,13 @@
       "Bash(git push)",
       "Bash(git commit -m \"fix: 修复 Vercel Edge Function 大小超限问题\n\n- 移除 middleware 中的 NextAuth auth 导入\n- 改为直接检查 session cookie\n- 避免导入 Prisma Client 导致 Edge Function 超过 1MB 限制\n- 简化 middleware 逻辑,仅检查 cookie 存在性\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git commit -m \"feat: 添加登录调试功能和详细日志\n\n- 添加调试页面 /debug 显示 session 和环境配置\n- 在登录页面添加详细错误信息显示\n- 在 auth.ts authorize 函数添加调试日志\n- 帮助排查 Vercel 部署后的登录问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
-      "Bash(git commit -m \"fix: 修复 Vercel 部署后登录跳转问题\n\n- 添加 trustHost: true 允许 NextAuth 自动检测正确的 host\n- 优化登录成功后的跳转逻辑,添加延迟让 cookie 生效\n- 修复 setLoading 在 else 分支未被调用的问题\n\n这应该解决登录成功后无法跳转到 Dashboard 的问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"fix: 修复 Vercel 部署后登录跳转问题\n\n- 添加 trustHost: true 允许 NextAuth 自动检测正确的 host\n- 优化登录成功后的跳转逻辑,添加延迟让 cookie 生效\n- 修复 setLoading 在 else 分支未被调用的问题\n\n这应该解决登录成功后无法跳转到 Dashboard 的问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git add VERCEL_SETUP.md)",
+      "Bash(git commit -m \"docs: 添加 Vercel 环境变量配置指南\n\n- 详细说明如何在 Vercel 设置 NEXTAUTH_URL\n- 提供完整的配置步骤和验证方法\n- 解决 NEXTAUTH_URL 未设置导致的登录问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 32388)",
+      "mcp__Playwright__browser_wait_for",
+      "Bash(git commit -m \"fix: 修复登录跳转问题并优化认证流程\n\n- 移除 Middleware 的 session token 检查,让 NextAuth 自动处理\n- 使用 signIn 的内置 redirect 功能 \\(redirect: true\\)\n- 设置 callbackUrl 确保登录后正确跳转到 dashboard\n- Dashboard 页面自己处理认证验证,提供更好的用户体验\n- 测试通过: 注册、登录、Dashboard 显示、登出都正常工作\n\n这个修复解决了登录成功后无法跳转的问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ]
   }
 }

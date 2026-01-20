@@ -1,11 +1,9 @@
 "use client"
 
 import { signIn } from "next-auth/react"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function LoginPage() {
-  const router = useRouter()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -19,24 +17,19 @@ export default function LoginPage() {
     const password = formData.get("password") as string
 
     try {
-      const result = await signIn("credentials", {
+      console.log("开始登录:", email)
+
+      // 使用 signIn 并让它自动处理 redirect
+      await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        callbackUrl: "/dashboard",
+        redirect: true,
       })
 
-      console.log("登录结果:", result)
-
-      if (result?.error) {
-        console.error("登录错误:", result.error)
-        setError(`登录失败: ${result.error}`)
-        setLoading(false)
-      } else {
-        // 登录成功,等待一小段时间让 cookie 生效
-        await new Promise(resolve => setTimeout(resolve, 100))
-        router.push("/dashboard")
-        router.refresh()
-      }
+      // 如果 redirect 失败,显示错误
+      setError("登录失败,请重试")
+      setLoading(false)
     } catch (error) {
       console.error("登录异常:", error)
       setError(`登录失败: ${error instanceof Error ? error.message : "未知错误"}`)
