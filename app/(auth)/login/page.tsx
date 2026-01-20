@@ -25,14 +25,20 @@ export default function LoginPage() {
         redirect: false,
       })
 
+      console.log("登录结果:", result)
+
       if (result?.error) {
-        setError("邮箱或密码错误")
-      } else {
+        console.error("登录错误:", result.error)
+        setError(`登录失败: ${result.error}`)
+      } else if (result?.ok) {
         router.push("/dashboard")
         router.refresh()
+      } else {
+        setError("登录失败,未知错误")
       }
     } catch (error) {
-      setError("登录失败，请稍后重试")
+      console.error("登录异常:", error)
+      setError(`登录异常: ${error instanceof Error ? error.message : "未知错误"}`)
     } finally {
       setLoading(false)
     }

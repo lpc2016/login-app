@@ -12,18 +12,29 @@ export const { handlers, auth } = NextAuth({
         password: { label: "密码", type: "password" }
       },
       async authorize(credentials) {
+        console.log("授权函数被调用, credentials:", credentials ? "存在" : "不存在")
+
         if (!credentials?.email || !credentials?.password) {
+          console.error("缺少邮箱或密码")
           return null
         }
 
         const email = credentials.email as string
         const password = credentials.password as string
 
+        console.log("尝试登录用户:", email)
+
         const user = await prisma.user.findUnique({
           where: { email }
         })
 
-        if (!user || !user.passwordHash) {
+        if (!user) {
+          console.error("用户不存在:", email)
+          return null
+        }
+
+        if (!user.passwordHash) {
+          console.error("用户没有密码哈希:", email)
           return null
         }
 
@@ -33,9 +44,11 @@ export const { handlers, auth } = NextAuth({
         )
 
         if (!passwordsMatch) {
+          console.error("密码不匹配:", email)
           return null
         }
 
+        console.log("登录成功:", email)
         return {
           id: user.id,
           email: user.email,

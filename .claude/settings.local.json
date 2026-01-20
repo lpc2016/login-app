@@ -22,7 +22,8 @@
       "Bash(ssh-add ~/.ssh/id_ed25519)",
       "Bash(git commit -m \"fix: 修复 TypeScript 类型错误 - credentials 参数类型断言\n\n- 添加 email 和 password 的类型断言\n- 解决 Vercel 部署时的 TypeScript 编译错误\n- 确保 credentials.email 和 credentials.password 正确转换为 string 类型\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git push)",
-      "Bash(git commit -m \"fix: 修复 Vercel Edge Function 大小超限问题\n\n- 移除 middleware 中的 NextAuth auth 导入\n- 改为直接检查 session cookie\n- 避免导入 Prisma Client 导致 Edge Function 超过 1MB 限制\n- 简化 middleware 逻辑,仅检查 cookie 存在性\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
+      "Bash(git commit -m \"fix: 修复 Vercel Edge Function 大小超限问题\n\n- 移除 middleware 中的 NextAuth auth 导入\n- 改为直接检查 session cookie\n- 避免导入 Prisma Client 导致 Edge Function 超过 1MB 限制\n- 简化 middleware 逻辑,仅检查 cookie 存在性\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
+      "Bash(git commit -m \"feat: 添加登录调试功能和详细日志\n\n- 添加调试页面 /debug 显示 session 和环境配置\n- 在登录页面添加详细错误信息显示\n- 在 auth.ts authorize 函数添加调试日志\n- 帮助排查 Vercel 部署后的登录问题\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")"
     ]
   }
 }
